@@ -3,3 +3,4 @@
 - Docker
 - Docker Compose
 - Air (Live Reloading)
+- Makefile
