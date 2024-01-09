@@ -1,17 +1,17 @@
+COMPOSE_FILES=docker-compose.yml
+
 start:
 	@echo "App: STARTING ..."
-	@docker-compose up --build -d
+	@docker-compose -f $(COMPOSE_FILES) up --build -d
 	@echo "App: STARTED"
-
 
 stop:
 	@echo "App: STOPPING..."
-	@docker-compose down
+	@docker-compose -f $(COMPOSE_FILES) down
 	@echo "App: STOPPED..."
 
-watch:
-	@echo "Watching for file changes... (Docker Compose v 2.22 < Needed)"
-	@docker compose watch  -d
+shell:
+	docker-compose -f $(COMPOSE_FILES) exec app bash
 
 logs: 
 	@docker-compose logs -f
