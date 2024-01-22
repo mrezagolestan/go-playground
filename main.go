@@ -7,7 +7,8 @@ import (
 
 func main() {
 	for {
-		fmt.Println("hello world 3")
+		now := time.Now()
+		fmt.Println(now.Format("2006-01-02 15:04:05"))
 		time.Sleep(1 * time.Second)
 	}
 }

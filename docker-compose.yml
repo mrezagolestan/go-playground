@@ -11,3 +11,22 @@ services:
       API_SERVER_ADDR: ":3000"
     ports:
     - "3000:3000"
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - ./docker/data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-postgres_db}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_password}
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - postgres
+
+
+networks:
+  postgres:
+    driver: bridge
